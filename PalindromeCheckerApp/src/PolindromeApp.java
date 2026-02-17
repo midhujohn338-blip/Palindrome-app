@@ -1,24 +1,34 @@
 public class PolindromeApp {
 
 
-    public static void main(String[] args) {
-        // String Literal - Text enclosed within double quotes
-        String word = "madam";
+        public static void main(String[] args) {
+            // String Literal - Text to be checked
+            String input = "madam";
 
-        // String - Built-in class used to store and manipulate textual data
-        String reversed = "";
+            // Character Array (char[]) - Converting string to primitive array for index-based access
+            char[] charArray = input.toCharArray();
 
-        // Logic to reverse the string manually
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed += word.charAt(i);
+            // Two-Pointer Technique - Initialize pointers at start and end
+            int left = 0;
+            int right = charArray.length - 1;
+            boolean isPalindrome = true;
+
+            // Loop until pointers meet in the middle
+            while (left < right) {
+                // Compare characters at current index positions
+                if (charArray[left] != charArray[right]) {
+                    isPalindrome = false;
+                    break; // Exit early if a mismatch is found
+                }
+                left++;  // Move start pointer forward
+                right--; // Move end pointer backward
+            }
+
+            // Console Output - Display the result
+            if (isPalindrome) {
+                System.out.println(input + " is a palindrome.");
+            } else {
+                System.out.println(input + " is not a palindrome.");
+            }
         }
-
-        // Conditional Statement (if-else) - Evaluates the palindrome condition
-        if (word.equals(reversed)) {
-            // Console Output - Displays the positive result
-            System.out.println(word + " is a palindrome.");
-        } else {
-            // Console Output - Displays the negative result
-            System.out.println(word + " is not a palindrome.");
-        }
-    }}
+    }
